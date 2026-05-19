@@ -1,0 +1,590 @@
+# Understanding The OSI Model 1.1
+## The OSI Model
+- What is the OSI Model
+	- Open Systems Interconnection Reference Model
+- It's a guide. Not strict
+- This is not the OSI Protocol Suit
+	- Most OSI Protocols didn't catch on
+- There are unique protocols at every layer
+- You'll refer to this model for the rest of your career
+- Layers: **All People Seem To Need Data Processing**
+	- 7: Application
+	- 6: Presentation
+	- 5: Session
+	- 4: Transport
+	- 3: Network
+	- 2: Data Link
+	- 1: Physical
+
+## Layer 1 - The Physical Layer
+- Physics of the network
+	- Signaling, cabling, connectors
+	- This layer isn't about protocols
+- Physical Layer Problems
+	- Fix your cabling, punch downs, etc
+	- Run loopback tests, test/replace cables, swap adapter cards
+## Layer 2 - Data Link Later
+- The basic network language
+	- Foundation of communication at the data link layter
+- Data Link Control (DLC) protocols
+	- MAC (Media Access Control) address on Ethernet
+- The "Switching" layer
+
+## Layer 3 - Network Layer
+- The "Routing" layer
+- Internet Protocol (IP)
+- Fragments frame to traverse different networks
+
+## Layer 4 - Transport Layer
+- "Post Office Layer"
+	- Parcels and letters
+- TCP (Transmission Control Protocol) and UDP (User Datagram Protocol)
+
+## Layer 5 - Session Layer
+- Communication Management between devices
+	- Stop, start, reset
+- Controls protocols, tunneling protocols
+
+## Layer 6 - Presentation Layer
+- Character encoding
+- Application encryption
+- Often combined with the application Layer
+## Layer 7 - Application Layer
+- Layer we see
+- HTTP, FTP, DNS, POP3
+
+## Real World to OSI Model
+- Physycal
+	- Cables, fiber, the signal itself
+	- Electrical Signals
+- Data Link
+	- Frame, MAC address, Extended Unique Identifier (EUI-48, EUI-64), Switch
+	- Ethernet
+- Network
+	- IP Address, Router, Packet
+	- IP Encapsulation
+- Transport
+	- TCP Segment, UDP datagram
+	- TCP encapsulation
+- Session
+	- Control Protocols, tunneling protocols
+	- Link presentaton to the transport
+- Presentation
+	- Application Encryption (SSL/TLS)
+	- SSL Encryption
+- Application
+	- Your eyes
+	- https://mail.google.com
+- You can use wireshark to capture network data
+
+
+# Networking Devices - 1.2
+## Networking devices
+- Many different ways to forward traffic
+	- A data center full of equipment
+- Every device has a purpose
+	- The implementation may change over time
+	- Once installed, it can often be difficult to remove
+- There are new technologies all the time
+	- Always something to learn
+
+## Router
+- Routes traffic between IP subnets
+	- OSI layer 3 device
+	- Routers inside of switches sometimes called "Layer 3 switches"
+		- Switches are usually a Layer 2 device
+- Often connects diverse network types
+	- LAN, WAN, copper, fiber, etc
+
+## Switch
+- Bridging done in hardware
+	- Application specific integrated circuit (ASIC)
+- An OSI Layer 2 device
+	- Forwards traffic based on data link address
+- Many ports and features
+	- The core of an enterprise network
+	- May provide Power over Ethernet (PoE)
+- Multilayer switch
+	- Includes Layer 3 (routing) functionality
+## Firewalls
+- Filter traffic by port number or application
+	- Traditional vs. NGFW
+- Encrypt traffic
+	- VPN between sites
+- Most firewallls can be layer 3 devices (routers)
+	- Often sits on the ingress/egress of the network
+	- Network Address Translation (NAT)
+	- Dynamic routing
+## IDS and IPS
+- Intrusion Detection System/Intrusion Prevention System
+	- Watch network traffic
+- Intrusions
+	- Exploits against operating systems, applications, etc.
+	- Buffer overflows, cross site scripting, other vulnerabilities
+- Detetion vs. Prevention
+	- Detect - Alarm or alert
+	- Prevent - Stop it before it gets to the network
+## Balancing the Load
+- Distribute the load
+	- Multiple servers
+	- Invisible to the end user
+- Large scale implementations
+	- Web server farms, database farms
+- Fault tolerance
+	- Server outages have no effect
+	- Very fast convergence
+## Load balancer
+- Configurable Load
+	- Manage across servers
+- TCP Offload
+	- Protocol overhead
+- SSL Offload
+	- Encryption/Decryption
+- Caching
+	- Fast Response
+- Prioritization
+	- QoS
+- Content Switching
+	- Application centric balancing
+## Proxies
+- Sits between the users and the external networks
+- Receives the user requests and sends the requests on their behalf (the proxy)
+- Useful for cahing information, access control, URL filtering, content scanning
+- Applications may need to know how to use the proxy (explicit)
+- Some proxies are invi8sible (transparent)
+
+## NAS vs SAN
+- Network Attached Storage (NAS)
+	- Connect to a shared storage device across the network
+	- File level access
+- Storage Area Network (SAN)
+	- Looks and feels like a local storage device.
+		- Block level access
+	- Very efficient reading and writing
+- Requires a lot of bandwidth
+	- May use an isolated network and high speed network technologies
+## Access Point (AP)
+- Not a wireless router
+	- A wireless router is a router and an access point in a single device
+- An access point is a bridge
+	- Extends the wired network onto the wireless network
+	- OSI layer 2 device
+## Wireless networks everywhere
+- Wireless networking is pervasive
+	- And you don't usually have just a single access point
+- Your access points may not even be in the same building
+	- One or more at every remote site
+- Configurations may change at any moment
+	- Access policy, security policies, AP configs
+- The network should be invisible to your users
+	- Seamless network access, regardless of role
+## Wireless LAN controllers
+- Centralized management of access points
+	- A single "Pane of glass"
+- Deploy new access ponts
+- Performance and security monitoring
+- Configure and deploy changes to all sites
+- Report on access point use
+- Usually a proprietary system
+	- The wireless controller is paired with the access points
+
+# Networking Functions - 1.2
+## Networking Functions
+- A lot is happening behind the scenes
+	- Many networking functions are part of the infrastructure
+- Access to important data from anywhere in the world
+- Remote access
+	- Secure network communication
+- Traffic management
+	- Prioritizes the important applications
+- Protocol support
+	- Maintain uptime and availability
+
+## Content Delivery Network (CDN)
+- It takes time to get data from one place to the other
+	- Speed up the process
+- Geographically distributed caching servers
+	- Duplicate the data
+	- Users get the data from a local server
+- You are using CDN right now
+	- Used on many websites
+	- Invisible to the end user
+
+## VPN (Virtual Private Network)
+- Secure private data traversing a public network
+	- Encrypted communication on an insecure medium
+- Concentrator / head-end
+	- Encryption/decryption access device
+	- Often integrated into a firewall
+- Many deployment options
+	- Specialized cryptographic hardware
+	- Software based options available
+- Often used with client software
+	- Sometimes built into the OS
+
+## Quality of Service (QoS)
+- Traffic shaping, packet shaping
+- Control by bandwidth usage or data rates
+- Set important applications to have higher priorities than other apps
+- Manage the QoS
+	- Routers, switches, firewalls, QoS devices, etc
+## Time to Live (TTL)
+- How long should data be available?
+	- Not all systems or protocols are self regulating
+	- We sometimes need to tell a system when to stop
+- Create a timer
+	- Wait until traversing a number of hops, or wait until a certain amount of time elapses
+	- Then either stop or drop
+- Many different uses
+	- Drop a packet caught in a loop
+	- Clear a cache
+## Routing loops
+- Router A things the next hop is Router B. Router B thinks the next hop is Router A. They get stuck.
+- Easy to misconfigure, especially with static routing
+- TTL is used to stop the loop
+## IP (Internet Protocol)
+- Loops could cause a packet to live forever
+	- Drop the packet after a certain number of hops
+- Each pass through a router is a hop
+	- Default TTL for macOS/Linux is 64 hops
+	- Defaukt TTL for Windows is 128 hops
+- The router decreases TTL by 1
+	- A TTL of 0 is dropped by the router
+## DNS (Domain Name System)
+- DNS Lookup
+	- Resolve an IP address from a fully qualified Domain Name
+	-  [WEBSITE NAME] = [IP ADDRESS]
+- A device caches the lookup for a certain amnount of time
+	- How long? TTL seconds long
+	
+# Designing the Cloud - 1.3
+## Designing the cloud
+- On demand computing power
+	- Click a button
+- Elasticity
+	- Scale up or down as needed
+- Applications also scale
+	- Scalability for large implementations
+	- Access from anywhere
+- Multitenancy
+	- Many different clients are using the same cloud infrastructure
+## Virtual networks
+- Server farm with 100 individual computers
+- All servers are connected with enterprise switches and routers
+	- With redundancy
+- Migrate 100 physical servers to one physical server
+	- With 100 virtual servers inside
+- What happens to the network?
+## Network Function Virtualization (NFV)
+- Replace physical network devices with virtual versions
+	- Manage fromt he hypervisor
+- Same functionality as a physical device
+	- Routing, switching, load balancing, firewalls, etc
+- Quickly and easily deploy network functions
+	- Click and deply from the hypervisor
+- Many different deployment options
+	- Virtual machine, container, fault tolerance, etc
+## Connecting to the cloud
+- A virtual private cloud (VPC)
+	- A pool of resources created in a public cloud
+- Common to create many VPCs
+	- Many different application clouds
+- Connect VPCs with a transit gateway
+	- And users to VPCs
+	- A "cloud router"
+- Now make is secure
+	- VPCs are commonly on different IP subnets
+	- Connecting to the cloud is often through a VPN
+
+## Virtual Private Cloud Endpoints
+
+![[Pasted image 20260518091330.png]]
+![[Pasted image 20260518091427.png]]
+## Security groups and lists
+- A firewall for the cloud
+	- Control inbound and outbound traffic flows
+- Layer 4 port number
+	- TCP or UDP port
+- Layer 3 address
+	- Individual addresses
+	- CIDR block notation
+	- IPv4 or IPv6
+## Network Security List
+- Assign a security rule to an entire IP subnet
+	- Applies to all devices in the subnet
+- Very broad
+	- Can become difficult to manage
+	- Not all devices in a subnet have the same security posture
+- More granularity may be needed
+	- Broad rules may not provide the right level of security
+## Network Security Group
+- Assign a security rule to a specific NIC (VNIC)
+	- Applies to specific devices and network connections
+- More granular than network security lists
+	- Different rules for devices in the same IP subnet
+- Better control and granularity
+	- The best practice for cloud security rules
+
+
+# Cloud Models : 1.3
+## Cloud Deployment
+- Public
+	- Available to everyone over the internet
+- Private
+	- Your own virtualized local data center
+- Hybrid
+	- A mix of public and private
+## Software as a Service (SaaS)
+- On demand software
+	- No local installation
+	- Why manage your own email distribution or payroll?
+- Central management of data and applications
+	- - Your data is out there
+- A complete application offering
+	- No development work required
+	- Google Mail, Office 365
+## Infrastructure as a service (IaaS)
+- Sometimes called Hardware as a Service (HaaS)
+	- Outsource your equipment
+- You're still responsible for the management
+	- And for the security
+- Your data is out there, but more within your control
+- Web server providers
+## Platform as a Service (PaaS)
+- No servers, no software, no maintenance team, no HVAC
+	- Someone else handles the platform, you handle the development
+- You don't have direct control of the data, people, or infrastructure
+	- Trained security professionals are watching your stuff
+	- Choose carefully
+- Put the building blocks together
+	- Develop your app from what's available on the platform
+	- Salesfoce, etc
+## Cloud Responsibility Matrix
+
+![[Pasted image 20260519060914.png]]
+
+# Introduction to IP
+## A series of moving vans analogy
+- Efficiently move a large amounts of data
+	- Using a shipping truck
+- The network topology is the road
+	- Ethernet, DSL, cable system
+- The truck is the Internet Protocol (IP)
+	- We've designed roads for this truck
+- The boxes hold your data
+	- Boxes of TCP and UDP
+- Inside the boxes are more things
+	- Application Information
+
+## IP - Internet Protocol
+
+![[Pasted image 20260519061226.png]]
+## TCP and UDP
+- Transported inside of IP
+	- Encapsulated by the IP protocol
+- Two ways to move data from place to place
+	- Different features for different applications
+- OSI Layer 4
+	- The transport layer
+- Multiplexing
+	- Use many different applications at the same time
+	- TCP and UDP
+## TCP - Transmission Control Protocol
+- Connection oriented
+	- A formal connection setup and close
+- "Reliable" delivery
+	- Recovery from errors
+	- Can manage out of order messages or retransmissions
+- Flow control
+	- The receiver can manage how much data is sent
+
+![[Pasted image 20260519061551.png]]
+
+## UDP - User Datagram Protocol
+- Connectionless
+	- No formal open or close to the connection
+- "Unreliable" delivery
+	- No error recovery
+	- No reordering of data or retransmission
+- No flow control
+	- Sender determines the amount of data transmitted
+![[Pasted image 20260519061802.png]]
+## Speedy delivery
+- The IP delivery truck delivers from one IP address to another IP address
+	- Every house has an address, every computer has an IP address
+- Boxes arrive at the house / IP address
+	- Where do the boxes go?
+	- Each box has a room name
+- Port is written on the outside of the box
+	- Drop the box into the right room
+## Lots of ports
+- IPv4 sockets
+	- Server IP address, protocol, server application port number
+	- Client IP address, protocol, client port number
+- Non ephemeral ports - permanent port numbers
+	- Ports 0 through 1023
+	- Usually on a server or service
+- Ephemeral ports- temporary port numbers
+	- Ports 1034 through 65,535
+## Ports on the network
+- Web server - tcp/80
+- VoIP server - udp/5004
+- Email server - tcp/143
+
+![[Pasted image 20260519062219.png]]
+![[Pasted image 20260519062312.png]]
+# Common Ports
+## FTP - File Transfer Protocol
+- tcp/20 (active mode data), tcp/21 (control)
+	- Authenticates with a username and password
+- Transfers files between systems
+	- Generic file transfer method
+	- Not specific to an OS
+- Full featured funtionality
+	- List, add, delete, etc
+## SSH - Secure Shell
+- tcp/22
+- Text based console communication
+- Encrypted communication link
+## SFTP - Secure FTP
+- tcp/22
+	- Uses the SSH File transfer protocol
+- Generic File transfer with security
+	- Encrypted network communication
+- Provides file system funtionality
+	- Resuming interrupted transfers, directory listings, remote file removal
+- Uses SSH (port 22)
+	- SSH isn't just for console communication
+## Telnet
+- Telnet - Telecommunication Network
+- tcp/23
+- Console access
+	- Similar functionality to SSH
+- In the clear communication
+	- Not the best choice for production systems
+## SMTP - Simple Mail Transfer Protocol
+- Server to server email transfer
+	- tcp/25 (SMTP using plaintext)
+	- tcp/587 (SMTP using TLS encryption)
+- Also used to send mail from a device to a mail server
+	- Commonly configured on mobile devices and email clients
+- Other protocols are used for clients to receive email
+	- IMAP, POP3
+## DNS - Domain Name System
+- udp/53
+	- Converts names to IP addresses
+	- Large transfers may use tcp/53
+- These are very critical resources
+	- Usually multiple DNS servers are in production
+## DHCP - Dynamic Host Configuration Protocol
+- udp/67, udp/68
+- Automated configuration of IP address, subnet mask, and other options
+	- Requires a DHCP server
+	- Server, appliance, integrated into a SOHO router, etc
+- Dynamic/Pooled
+	- IP addresses are assigned in real time from a pool
+	- Each system is given a lease, must renew at set intervals
+- DHCP reservation
+	- Addresses are assigned by MAC address in the DHCP server
+	- Quickly manage addresses from one location
+## TFTP - Trivial File Transfer Protocol
+- udp/69
+- VEry simple file transfer appication
+	- Read and write files
+- No authentication
+	- Not used on highly secure systems
+- Useful when starting a system
+	- Transfer configuration files
+	- Quick and easy
+## HTTP and HTTPs
+- Hypertext Transfer Protocol
+	- Communication in the browser
+	- And by all other applications
+- In the clear or encrypted
+	- SSL (Secure Sockets Layer) or TLS (Transport Layer Security)
+- HTTP
+	- tcp/80
+	- Hypertext Transfer Protocol
+	- Web server communication
+- HHTPS
+	- tcp/443
+	- HTTP over TLS or SSL
+	- Web server communication with encryption
+## NTP - Network Time Protocol
+- Switches, routers, firewalls, servers, workstations
+	- every device has its own clock
+- udp/123
+- Synchronizing the clocks becomes critical
+	- Log files, authentication information, outage details
+- Automatic updates
+- Flexible - You control how clocks are updated
+- Very accurate
+	- Accuracy is better than 1 millisecond on a local network
+## SNMP - Simple Network Management Protocol
+- Gather statistics from network devices
+- udp/161
+- v1 - The original
+	- Structured tables
+	- In the clear
+- v2 - a good step ahead
+	- Data type enhancements
+	- Bulk transfers
+	- Still in the clear
+- v3 - A secure standard
+	- Message integrity
+	- Authentication
+	- Encryption
+- SNMP traps
+	- udp/162
+	- Alerts and notifications from the network device
+## LDAP/LDAPS
+- LDAP (Lightweight Directory Access Protocol)
+	- tcp/389
+	- Store and retrieve information in a network directory
+- LDAPS (LDAP Secure)
+	- A non standard implementaton of LDAP over SSL
+	- tcp/636
+## SMB - Server Message Block
+- Protocol used by Microsoft Windows
+	- File sharing, printer sharing
+	- Also called CIFS (Common Internet File System)
+- Integrated into the operating system
+	- Access rights integration across systems
+	- File share publishing
+	- File locking
+- Direct over tcp/445 (NetBIOS-less)
+	- Direct SMB communication over TCP
+## Syslog
+- Udp/514
+- Standard for message logging
+	- Diverse systems, consolidated log
+- Usually a central log collector
+	- Integrated into the SIEM
+		- Security Information and Event Manager
+- You're going to need a lot of disk space
+	- Data storage from many devices over an extended timeframe
+## Databases
+- Collection of information
+	- Many different types of data
+	- One common method to store and query
+- Structured Query Langiage (SQL)
+	- A standard language across database servers
+- Microsoft SQL Server
+	- MS-SQL
+	- tcp/1433
+## Remote Desktop Protocol
+- tcp/3389
+- Share a desktop from a remote location
+	- Connect to an entire desktop or just an application
+- Remote Desktop Services on many windows versions
+	- Clients for Windows, macOS, Linux, Unic, iPhone, and others
+## SIP - Session Initiation Protocol
+- Voice over IP (VoIP) signaling
+	- tcp/5060 and tcp/5061
+- Setup and manage VoIP sessions
+	- Call, ring, play busy signal, hang up
+- Extended voice communication
+	- Video conferencing
+	- Instant messaging
+	- File transfer
+	- etc
