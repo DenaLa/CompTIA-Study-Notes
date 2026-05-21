@@ -469,3 +469,85 @@
 - Can be added to Windows later
 	- Media Feature Pack for N edition
 	- Settings -> Apps -> Optional features -> Add on optional feature -> Media Feature Pack
+# Windows Features
+## Windows at Work
+- Large scale support
+	- Thousands of devices
+- Security cooncerns
+	- Mobile devices with important data
+	- Local file shares
+	- Laptop drives
+- Working on a spreadsheet
+	- Watching a movie
+## Domain Services
+- Active Directory Domain Services
+	- Large database of your network
+- Everything documented in one place
+	- User accounts, servers, volumes, printers
+- Distributed architecture
+	- Many servers
+	- Not suitable for home use
+- Many different uses
+	- Authentication
+	- Centralized management
+
+## Organizing network devices
+- Windows Workgroups
+	- Logical groups of networking devices
+	- Each device is a standalone system, everyone is a peer
+- Windows Domain
+	- Business network
+	- Centralized authentication and devices acess
+	- Supports thousand of devices across many networks
+
+## Desktop Styles
+- Your computer has many different uses
+	- Those change depending on where you are
+- Work
+	- Standard desktop
+	- Common user interface
+	- Customization very limited
+	- You can work at any computer
+- Home
+	- Complete flexibility
+	- Background photos, colors, UI sizing
+## Availability of RDP
+- Remote Desktop Protocol
+	- View and control the desktop of a remote device
+- RDP client
+	- Connects to a Remote Desktop Service
+	- Clients available for almost any operating system
+- Remote Desktop Service
+	- Provides access for the RDP client
+	- Available in Windows 10 and 11 Pro and Enterprise
+	- Not available in Windows 10 and 11 Home
+
+## RAM support limitation
+- RAM support varies between editions
+	- More advanced editions allow for additional RAM
+
+## Bitlocker and EFS
+- Data confidentiality
+	- Encrypt important information
+- Encrypting File System (EFS)
+	- Protect individual files and folders
+	- Built in to the NTFS file system
+- Bitlocker
+	- Full Disk Encryption (FDE)
+	- Everything on the drive encrypted 
+	- Even the operating system
+- Home and business use
+	- Especially on mobile devices
+
+## Group Policy editor
+- Centrally manage users and systems
+	- Policies can part of Active directory or a local system
+- Local Group Policy
+	- Manages the local device
+	- gpedit.msc
+- Group Policy Management Console
+	- Integrated with Active Directory
+	- Power system management
+	- gpmc.msc
+
+# Task Manager
