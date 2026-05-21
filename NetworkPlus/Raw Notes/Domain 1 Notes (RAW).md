@@ -780,7 +780,136 @@
 	- Line of sight, rain fade
 
 # Ethernet Standards - 1.5
+## Ethernet
+- The most popular networking technology in the world
+	- Standard, common, nearly universal
+- Many different types of ethernet
+	- Speeds, cabling, connectors, equipment
+- Modern Ethernet uses twisted pair copper or fiber
+	- The standard defines the media
 
+## IEEE Ethernet standards
+- The IEEE 802.3 committee
+	- Institute of Electrical and Electronic Engineers
+	- All types and standards of Ethernet
+	- Copper and fiber
+- IEEE Standards for Internet
+	- 1000BASE-T: Gigabit ethernet, copper, 1 gigabit per second
+	- 10GBASE-T: 10 Gigabit Ethernet, copper, 10 gigabits per second
+	- 1000BASE-SX: Gigabit Ethernet, fiber, 1 gigabit per second
+
+## Deciphering the standard
+- Speed, signal, and media
+	- All contained in the standard name, i.e, 1000BASE-T
+- The number is related to the network Speed
+	- 1000 is commonly 1,000 megabits per second (or one gigabit per/sec)
+	- 10G would be 10 gigabits per second
+- BASE (baseband)
+	- Single frequency using the entire medium
+	- Broadband uses many frequencies, sharing the medium
+- Media Type
+	- T is twisted pair copper, F is fiber
+	- SW is short wavelength light
 # Optical Fiber - 1.5
+## FIber Communication
+- Transmission by light
+	- The visible spectrum
+- No RF signal
+	- Very difficult to monitor or tap
+- Signal slow to degrase
+	- Transmission over long distances
+- Immune to radio interference
+	- There's no RF
+
+## Fiber Optic Diagrams
+![[Pasted image 20260521061634.png]]
+![[Pasted image 20260521061700.png]]
+![[Pasted image 20260521061720.png]]
+
+## Multimode Fiber
+- Short range communication
+	- Up to 2 km
+- Inexpensive light source
+	- ie, LED
+![[Pasted image 20260521061816.png]]
+
+## Single Mode Fiber
+- Long range communications
+	- Up to 100 km without processing
+- Expensive light source
+	- Laser beams
+![[Pasted image 20260521061901.png]]
 
 # Copper Cabling - 1.5
+## The importance of cable
+- Fundamental to network communication
+	- Incredibly important foundation
+- Usually only get one good opportunity at building your cabling infrastructure, so make it good
+- The cast majority of wireless communication uses cables
+	- Everything eventually touches a cable
+## Twisted pair copper cabling
+- Balanced pair operation
+	- Two wires, with equal and opposite signals
+	- Transmit+, Transmit-/Receive+, Receive-
+- The twist is the secret
+	- Twisted cables keep a single wire constantly mioving away from interference
+	- The opposite signals are compared on the other end
+- Pairs in the same cable have different twists rates
+## Cable speeds
+- Cables don't have a speed
+	- The copper just sits there
+- Electric signals are sent over copper cable
+	- The signal encoding determined the data transfer rate
+- A cable must be manufactured to specific standards
+	- IEEE 802.3 Ethernet standards determine the cable type
+- Cable standars are descried as a "category" of cable
+	- Category 6, category 7, etc
+	- Check for the IEEE standard to determine the minimum cable category
+	- The minimum cable category for 1000BASE-T is Category 5
+
+## Coaxial cables
+- Two or more forms share a common axis
+- RG-6 used in television/digital cable
+	- And high speed internet over cable
+![[Pasted image 20260521062513.png]]
+
+## Twinaxial Cable
+- Two inner conductors
+	- Twinax
+- Common on 10 Gigabit Ethernet SFP+ Cables
+	- Full duplex
+	- Five meters
+	- Low cost
+	- Low latency compared to twisted pair
+
+## Plenum space
+- Space between the drop ceiling and the actual ceiling
+- Contains cables, heat sensors, and other pieces of infrastructure
+## No Plenum
+![[Pasted image 20260521062801.png]]
+
+## Plenum
+![[Pasted image 20260521062842.png]]
+- Plenum Space
+	- Building Air circulation
+	- Heating and air conditioning system
+- Concerns in the case of a fire
+	- Smoke and toxic fumes
+- Worst case planning
+	- Important concerns for any structure
+## Plenum rated cables
+- Traditional cable jacket
+	- Polyvinyl chloride (PVC)
+- Fire rated cable jacket
+	- Flourinated ethylene polymer (FEP) or low smoke polyvinyl chloride (PVC)
+- Plenum rated cable may not be as flexible
+	- May not have the same bend radius
+- Worst case planning
+	- Used in plenum and risers
+	- Important concerns for any structure
+
+# Network Transceivers - 1.5
+
+# Fiber Connectors 1.5
+
+# Copper Connectors 1.5
