@@ -469,6 +469,7 @@
 - Can be added to Windows later
 	- Media Feature Pack for N edition
 	- Settings -> Apps -> Optional features -> Add on optional feature -> Media Feature Pack
+
 # Windows Features
 ## Windows at Work
 - Large scale support
@@ -550,4 +551,39 @@
 	- Power system management
 	- gpmc.msc
 
-# Task Manager
+# Task Manager: 1.4
+## Task Manager
+- Real time system statistics
+	- CPU, memory, disk access, etc
+- Starting the Task Manager
+	- ctrl + alt + del, select task manager
+	- Right mous click the taskbar and select taskbar
+	- ctrl + shift + esc
+## Services
+- Non interactive applications
+	- Hundred of background processes
+- Manage from one screen
+	- Star, stop, restart
+## Startup
+- Manage which programs start with a Windows login
+	- Easily toggle on and off
+- Multiple reboots
+	- Enable and disable
+## Processes
+- View all running processes
+	- Interactive and system tray apps
+	- View processes from other accounts
+- Manage the view
+	- Move columns, add metrics
+## Performance
+- What's happening?
+	- CPU, memory, etc
+- Statistical views
+	- Historical, real time
+## Users
+- Who is connected?
+	- What are they doing
+- Other options
+	- Disconnect a user
+	- Manage user accounts
+# The Microsoft Management Console: 1.4
