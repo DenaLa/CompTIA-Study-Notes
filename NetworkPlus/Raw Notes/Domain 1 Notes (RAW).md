@@ -1,589 +1,1017 @@
-# Operating Systems Overview: 1.1
-## Why do you need an OS
-- Control interaction between components
-	- Memory, hard drives, keyboard, CPU
-- A common platform for applications
-	- You're going to do some work, right?
-- Humans need a way to interact with the machine
-	- The user interface
-	- Hardware can't do everything
+# Understanding The OSI Model 1.1
+## The OSI Model
+- What is the OSI Model
+	- Open Systems Interconnection Reference Model
+- It's a guide. Not strict
+- This is not the OSI Protocol Suit
+	- Most OSI Protocols didn't catch on
+- There are unique protocols at every layer
+- You'll refer to this model for the rest of your career
+- Layers: **All People Seem To Need Data Processing**
+	- 7: Application
+	- 6: Presentation
+	- 5: Session
+	- 4: Transport
+	- 3: Network
+	- 2: Data Link
+	- 1: Physical
+## Layer 1 - The Physical Layer
+- Physics of the network
+	- Signaling, cabling, connectors
+	- This layer isn't about protocols
+- Physical Layer Problems
+	- Fix your cabling, punch downs, etc
+	- Run loopback tests, test/replace cables, swap adapter cards
+## Layer 2 - Data Link Later
+- The basic network language
+	- Foundation of communication at the data link layter
+- Data Link Control (DLC) protocols
+	- MAC (Media Access Control) address on Ethernet
+- The "Switching" layer
 
-## Standard OS features
-- File management
-	- Add, delete, rename
-- Application support
-	- Memory management, swap file management
-- Input and Output support
-	- Printers, keyboards, storage drivers, USB drives
-- Operating system configuration and management tools
+## Layer 3 - Network Layer
+- The "Routing" layer
+- Internet Protocol (IP)
+- Fragments frame to traverse different networks
 
-## Microsoft Windows
-- Major market presence 
-- Many different versions
-- Advantages
-	- Large industry support
-	- Broad selection of OS option
-	- Wide variety of software support
-- Disadvantages
-	- Large install base provides a big target for security exploitation
-	- Large hardware support can create challenging integration exercises.
+## Layer 4 - Transport Layer
+- "Post Office Layer"
+	- Parcels and letters
+- TCP (Transmission Control Protocol) and UDP (User Datagram Protocol)
 
-## Linux
-- Free Unix-compatible software system
-	- Unix like, but not unix
-- Many different distributions
-	- Ubuintu, debian, red hat/fedora
-- Advantages
-	- Free
-	- Works on wide variety of hardware
-	- Passionate and active user community
-- Disadvantages
-	- Limited driver support, especially with laptops
-	- Limited support options
+## Layer 5 - Session Layer
+- Communication Management between devices
+	- Stop, start, reset
+- Controls protocols, tunneling protocols
 
-## Apple macOS
-- macOS
-	- Desktop OS running on Apple hardware
-- Advantages
-	- Easy to use
-	- extremely compatible
-	- Relatively fewer security concerns
-- Disadvantages
-	- Requires Apple hardware
-	- Less industry support than the PC platform
-	- Higher initial hardware cost
+## Layer 6 - Presentation Layer
+- Character encoding
+- Application encryption
+- Often combined with the application Layer
+## Layer 7 - Application Layer
+- Layer we see
+- HTTP, FTP, DNS, POP3
 
-## Chrome OS
-- Google's operating system
-	- Based on the Linux kernel
-- Centers around chrome web browser
-	- Most apps are web based
-- Many different manufacturers
-	- Relatively less expensive
-- Relies on the cloud
-	- Connect to the Internet
+## Real World to OSI Model
+- Physycal
+	- Cables, fiber, the signal itself
+	- Electrical Signals
+- Data Link
+	- Frame, MAC address, Extended Unique Identifier (EUI-48, EUI-64), Switch
+	- Ethernet
+- Network
+	- IP Address, Router, Packet
+	- IP Encapsulation
+- Transport
+	- TCP Segment, UDP datagram
+	- TCP encapsulation
+- Session
+	- Control Protocols, tunneling protocols
+	- Link presentaton to the transport
+- Presentation
+	- Application Encryption (SSL/TLS)
+	- SSL Encryption
+- Application
+	- Your eyes
+	- https://mail.google.com
+- You can use wireshark to capture network data
 
-## Apple iPadOS
-- Operating system for Apple's IPad Tablets
-- Tablet Features
-	- Desktop browser (Safari)
-	- Second monitor (Sidecar)
-	- Keyboard support
-	- Multitasking
 
-## Apple iOS
-- Apple iOS
-	- Apple iPhones
-	- Based on Unix
-	- Closed source, no access to source code
-	- Exclusive to apple products
-- iOS Apps
-	- Apps are developed with Apple's SDK on macOS
-	- Apps must be approved by Apple before release
-	- Apps are available to users in the Apple App Store
+# Networking Devices - 1.2
+## Networking devices
+- Many different ways to forward traffic
+	- A data center full of equipment
+- Every device has a purpose
+	- The implementation may change over time
+	- Once installed, it can often be difficult to remove
+- There are new technologies all the time
+	- Always something to learn
 
-## Google Android
-- Google Android
-	- Open Handset Alliance
-	- Open source, OS, based on Linux
-	- Supported on many different manufacturer's devices
-- Android Apps
-	- Apps are developed on Windows, macOS, and Linux with the Android SDK
-	- Apps available from Google Play
-	- Apps also available from third-party sites
+## Router
+- Routes traffic between IP subnets
+	- OSI layer 3 device
+	- Routers inside of switches sometimes called "Layer 3 switches"
+		- Switches are usually a Layer 2 device
+- Often connects diverse network types
+	- LAN, WAN, copper, fiber, etc
 
-## Vendor specific limitations
-- End of life
-	- Different companies set their own EOL policies
-- Updating
-	- iOS, Android, and Windows check and prompt for updates
-	- Chrome OS will update automatically
-- Compatibility between operating systems
-	- Some movies and music can be shared 
-- Almost no direct application compatibility
-	- Fortunately, many apps have been built to run on different OSes
-	- Some data files can be moved across systems
-	- Web based apps have potential
+## Switch
+- Bridging done in hardware
+	- Application specific integrated circuit (ASIC)
+- An OSI Layer 2 device
+	- Forwards traffic based on data link address
+- Many ports and features
+	- The core of an enterprise network
+	- May provide Power over Ethernet (PoE)
+- Multilayer switch
+	- Includes Layer 3 (routing) functionality
+## Firewalls
+- Filter traffic by port number or application
+	- Traditional vs. NGFW
+- Encrypt traffic
+	- VPN between sites
+- Most firewallls can be layer 3 devices (routers)
+	- Often sits on the ingress/egress of the network
+	- Network Address Translation (NAT)
+	- Dynamic routing
+## IDS and IPS
+- Intrusion Detection System/Intrusion Prevention System
+	- Watch network traffic
+- Intrusions
+	- Exploits against operating systems, applications, etc.
+	- Buffer overflows, cross site scripting, other vulnerabilities
+- Detetion vs. Prevention
+	- Detect - Alarm or alert
+	- Prevent - Stop it before it gets to the network
+## Balancing the Load
+- Distribute the load
+	- Multiple servers
+	- Invisible to the end user
+- Large scale implementations
+	- Web server farms, database farms
+- Fault tolerance
+	- Server outages have no effect
+	- Very fast convergence
+## Load balancer
+- Configurable Load
+	- Manage across servers
+- TCP Offload
+	- Protocol overhead
+- SSL Offload
+	- Encryption/Decryption
+- Caching
+	- Fast Response
+- Prioritization
+	- QoS
+- Content Switching
+	- Application centric balancing
+## Proxies
+- Sits between the users and the external networks
+- Receives the user requests and sends the requests on their behalf (the proxy)
+- Useful for cahing information, access control, URL filtering, content scanning
+- Applications may need to know how to use the proxy (explicit)
+- Some proxies are invi8sible (transparent)
 
-# File Systems: 1.1
-## File Systems
-- Before data can be written to the partition, it must be formatted
-	- Build the foundation
-- Operating systems expect data to be written in a particular format
-	- FAT32 and NFTS are popular
-- Many operating systems can read (and sometimes write) multiple file system types
-	- FAT, FAT32, NTFS, exFAT, etc
-## NTFS
-- NTFS - NT File System
-	- Extensive improvements over FAT32
-	- Quotas, file compression, encryption, symbolic links, large file support, security, recoverability
-- Not very compatible across operating systems
-	- Many OSes will read NTFS but not write
-	- Some have limited write functionality to an NTFS file system
-## Resilient File System (ReFS)
-- The Future of Windows file systems
-	- An update to NTFS
-	- Server 2012 and later, limited support in Windows 8.1 and later
-- Huge storage requirements
-	- Support for very large drives and storage arrays
-- Constant data availability
-	- Self repairing, ongoing integrity checks, no more chkdsk!
-	- The file system also provides RAID-like redundancy
-- A measured integration
-	- Updates and improvements are ongoing
-## FAT
-- FAT - File Allocation table
-	- One of the first PC based systems (circa 1980)
--  FAT32 - File Allocation Table
-	- Larger (2 TB) volume sizes
-	- Maximum file size of 4 gb
-- exFAT - Extended File Allocation Table
-	- Microsoft flash drive file system
-	- Files can be larger than 4 gigabytes
-	- Compatible across many operating systems
-	- Windows, Linux, MacOS
-## ext4
-- Fourth extended file system
-	- update to ext3
-	- Commonly seen in Linux and AndroidOS
-## Extended Files Systems
-- High performance file system for Linuc
-	- Supported in most linux distros
-- Designed for scalability
-	- Large scale computing and high speed processing
-- Features for the enterprise
-	- Support for large file system size
-	- Built in journaling
-	- Minimal fragmentation
-## APFS
-- Apple File System (APFS)
-	- Added to macOS High Sierra
-	- Also Included with iOS and iPadOS
-- Optimized for solid state storage
-	- Encryption, snapshots, increased data integrity
+## NAS vs SAN
+- Network Attached Storage (NAS)
+	- Connect to a shared storage device across the network
+	- File level access
+- Storage Area Network (SAN)
+	- Looks and feels like a local storage device.
+		- Block level access
+	- Very efficient reading and writing
+- Requires a lot of bandwidth
+	- May use an isolated network and high speed network technologies
+## Access Point (AP)
+- Not a wireless router
+	- A wireless router is a router and an access point in a single device
+- An access point is a bridge
+	- Extends the wired network onto the wireless network
+	- OSI layer 2 device
+## Wireless networks everywhere
+- Wireless networking is pervasive
+	- And you don't usually have just a single access point
+- Your access points may not even be in the same building
+	- One or more at every remote site
+- Configurations may change at any moment
+	- Access policy, security policies, AP configs
+- The network should be invisible to your users
+	- Seamless network access, regardless of role
+## Wireless LAN controllers
+- Centralized management of access points
+	- A single "Pane of glass"
+- Deploy new access ponts
+- Performance and security monitoring
+- Configure and deploy changes to all sites
+- Report on access point use
+- Usually a proprietary system
+	- The wireless controller is paired with the access points
 
-# Installing Operating Systems: 1.2
-## Boot Methods
-- USB storage
-	- USB must be bootable
-	- Computer must support booting from USB
-- Network boot
-	- PXE ("Pixie") - Preboot eXecution Environment
-	- Perform a remote network installation
-	- Computer must support booting with PXE
-- Solid state drives / Hard drives
-	- Store many OS installation files
-- Internet-based
-	- Linus distibutions, macOS Recovery installation, Winsows updates
-- External / hot swappable drive
-	- some external drives can mount an ISO image (optical drive image)
-	- Boot from USB
-- Internal hard drive
-	- Install and boot from separate drive
-	- Create and boot from new partition
-- Multiboot
-	- Pick from two or more OSes from a boot menue
-	- Windows, Linus, etc
-
-## Types of installations
-- Clean install
-	- Wipe the slate clean and reinstall
-	- Migration tool can help
-- In place upgrade
-	- Maintain existing applications and data
-- Image deployment
-	- Deploy a clone on every computer
-	- Relatively quick
-	- Can be completely automated
-- Remote network installation
-	- Local server or shared drive
-	- Install across the internet
-- Recovery partition
-	- Hidden partition with installation files
-- Repair installation
-	- Fix problems with the Windows OS
-	- Does not modify user files
-- Other considerations
-	- Load alternate third party drivers when necessary
-		- Disk controller drivers, etc
-## Zero Touch Deployment
-- An automatic install
-	- Streamlined implementation
-- Customize the installation process
-	- Automate the entire process
-	- Company specific configurations
-- A seamless user experience
-	- Turn on the system and go
-	- No domain questions or account issues
-- Send a laptop to a user anywhere
-	- The installation takes care of itself
-## The disk partition
-- Separates the physical drive into logical pieces
-	- Useful to keep data separated
-	- Multiple partitions are not always necessary
-- Useful for maintaining separate operating systems
-	- Windows, Linux, etc
-- Formatted partitions are called volumes
-	- Microsoft's nomenclature
-## GPT partition style
-- GPT (DUID Partition Table)
-	- Globally Unique Identifier
-	- The latest partition format standard
-- Requires a UEFI BIOS
-	- Can have up to 128 partitions
-	- Maximum partition size is over 9 billion TB
-	- Windows max partition is currently 256 TB
-- No need for extended partitions or logical drives
-## MBR Partition Style
-- Master Boot Record
-	- The old standby with old limitations
-	- Maximum partition size of 2 TB
-- Primary
-	- Bootable partitions
-	- Maximum of four primary partitions per storage drive
-	- One of the primary partitions can be marked as Active
-- Extended
-	- Used for extending the maximum number of partitions
-	- One extended partition per storage device (optional)
-	- Contains additional logical partitions
-	- Logical partitions inside an extended partition are not bootable
-
-## Disk Partitioning
-- The first step when preparing diskd
-	- May already be partitioned
-		- Existing partitions may not always be compatible with your new operating system
-- An MBR style hard disk can have up to four partiions
-- GUID partition tables support up to 128 partitions
-	- Requires UEFI BIOS or BIOS-compatibility mode
-	- BIOS-compatibility mode disables UEFI SecureBoot
-- **BE CAREFUL**
-	- Serious potential for data loss
-	- This is not an every day occurrence
-
-## Installation Partitioning
-
-![[Pasted image 20260518132919.png]]
-
-## Quick Format vs. Full Format
-- Quick format
-	- Creates a new file table
-	- Looks like data is erased, but it's not
-	- No additional checks
-- Quick format is the default during installation in Windows 10 and 11
-	- Use diskpart for a full format
-- Full Format
-	- Writes zeroes to the whole disk
-	- Data is unrecoverable
-	- Checks the disk for bad sectors (Time consuiming)
-# Upgrading Windows: 1.2
-## Why upgrade?
-- Why upgrade?
-	- Upgrade - Keep files in place
-	- Install - Start over completely fresh
-- Maintain consistency
-	- Customized configurations
-	- Multiple local user accounts
-- Upgrades save hours of time
-	- Avoid application reinstall
-	- Keep user data intact
-	- Keep user settings
-	- Get up and running quickly
-## Upgrade methods
-- In place upgrade
-	- Upgrade existing OS
-	- Keeps all applications, documents, and settings
-	- Start the setup from inside the existing OS
-- Clean install
-	- Wipe everything and reload
-	- Backup your files
-	- Start the setup by booting from the installation media
-## Prepare the boot drive
-- Know your drive
-	- Is data on the drive?
-	- Has the drive been formatted?
-	- What partitions are on the drive
-- Backup any old data
-	- You may need that data again somedday
-	- Save user preferences
-- Most partitioning and formatting can be completed during the installation
-	- Clear the drive and start fresh
-
-## Before the installation
-- Check minimum OS requirements
-	- Memory, disk space, etc
-	- And the recommended requirements
-- Run a hardware compatibulity check
-	- Runs when you perform an upgrade
-	- Run manually from them Windows setup screen
-	- PC Health Check for Windows 11
-- Plan for installation questions
-	- Drive/Partition configuration, license keys, etc.
-- Application and driver compatibility
-	- Check with the app developer and hardware manufacturer
-## Windows product life cycle
-- Quality updates
-	- Monthly security updates and bug fixes
-- Features updates
-	- Annual update with new features
-	- Used to occur every 3 to 5 years
-- Support is provided after the release
-	- 18 to 36 months
-	- Dependent on the Windows version and edition
-- Also called the Modern Lifecycle Policy
-	- For continuously supported products
-
-## Windows 11 hardware requirements
-- Some additional requirements
-	- More than usual
-	- May require some planning
-- TPM - Trusted Platform Module
-	- Security hardware on the motherboard
-	- Must be 2.0 compatible
-	- Used for BitLocker, Windows Hello
-- Check your hardware
-	- Run tpm.msc
-- UEFI BIOS
-	- The hardware must be Secure Boot capable
-- Enable Secure Boot for Additional Security
-	- Check in System Information/System Summary
-- May not be available on legacy systems
-	- Check with the PC Manufacturer
-
-![[Pasted image 20260519070820.png]]
-# An Overview of Windows - 1.3
-## Windows on the Core 2 Exam
-- ***This information might be outdated since Windows 10 is no longer supported by Microsoft***
-- Two Windows versions, 10 and 11
-- CompTIA considers all inn support windows versions to be in scope of the exam
-	- Mainstream support is 5 years after release
-- Windows versions are listed in the objectives
-- 10 and 11 are similar, so knowing one means you pretty much know the other
-## Windows 10
-- Released on July 29, 2015
-- A single platform
-	- Desktop, laptops, tablets, phones, all in one devices 
-- More than 14 different released versions
-- Windows Home and Pro support ended in October 14th, 2025
-	- Enterprise version presumably still around
-## Windows 10 Home
-- Home user
-	- Retail sales
-- Integration with Microsoft Account
-	- Microsoftt One Drive Backup
-- Windows Defender
-	- Anti virus and anti malware
-- Cortana
-	- Talk to your OS
-## Windows 10 Pro
-- The business version of Windows
-	- Additional management features
-- Remote Desktop Host
-	- Remote control each computer
-- BitLocker
-	- Full Disk Encryption (FDE)
-- Join a Windows Domain
-	- Group Policy Management
-## Windows 10 Pro for Workstations
-- An edition for high end desktops
-	- Enhanced performance and storage options
-- More physical CPUs
-	- Up to 4
-- High maximum RAM
-	- Supports up to 6 TB
-- Support for ReFS
-	- Resilient File System
-	- Same as Windows Server
-## Windows 10 Enterprise
-- Built for large implementations
-	- Volume licensing
-- AppLocker
-	- Control what applications can run
-- BranchCache
-	- Remote site file caching
-- Granular User Experience (UX) Control
-	- Define the user environment
-	- Useful for Kiosk and Workstation Customization
-
-## Windows 10 Editions
-- Home
-	- No Domain Access
-	- No BitLocker
-	- Client Only remote desktop
-	- No group management policy
-	- Max 32 bit ram is 4 GB
-	- Max 64 bit ram is 128 GB
-- Pro, Pro for Workstations, and Enterprise all have Domain access, Bitlocker, support Client and Host remote desktop, and have a max of 4 GB of RAM for their 32 bit versions
-	- 64 bit of Pro is up to 2 TB of RAM
-	- Pro for Workstations and Enterprise are up to 6 TB of RAM
-## Windows 11
-- Released on October 5, 2021
-	- An upgrade to Windows 10
-	- No support for 32 bit
-- Updated user interface
-	- New start menu and taskbar widgets
-- Usability updates
-	- Snap layouts
-	- Integrated microsoft tems
-	- Better touch based intergration
-	- Windows Copilot AI powered assistant
-## Windows 11 Home
-- The consumer verison. Designed for home use
-- Integrates with Microsoft accounts
-	- Can be installed with a local account
-- Limited management functionality
-	- No support for active directory
--  Includes Device encryption
-		- A consumer version of full disk encryption
-		- Stores the recovery information in the user's Microsoft account
-## Windows 11 Pro
-- Designed for business
-	- Large scale system management
-- Integrates with Active Directory
-	- Microsoft directory services
-- Bitlocker available
-	- Full disk encryption
-- Integrated virtualization
-	- Microsoft Hyper V
+# Networking Functions - 1.2
+## Networking Functions
+- A lot is happening behind the scenes
+	- Many networking functions are part of the infrastructure
+- Access to important data from anywhere in the world
 - Remote access
-	- Remote Desktop service support
-## Windows 11 Enterprise
-- Built for large company deployments
-	- Volume licensing
-	- Server features
-- Device management
-	- Includes Mobile Device Management (MDM) and Mobile Application Management (MAM)
-- Support for ReFS
-	- Resilient File System
-## Windows 11 editions
-- Home has no domain access, no bitlocker, no group management policy, and is client only for remote desktop
-	- 128 GB of RAM max
-- Pro and Enterprise both have Dommain Access, Bitlocker, Client and Host remote desktop, and Group policy management
-	- 2 TB of RAM for Pro
-	- 6 TB of RAM for enterprise
-## Windows N editions
-- Windows editions for Europe
-	- The result of antitrust investigations by the European Commission
-	- N = Not with Media Player
-- No Windows Media Player
-	- Or any other multimedia utilities
-- Can be added to Windows later
-	- Media Feature Pack for N edition
-	- Settings -> Apps -> Optional features -> Add on optional feature -> Media Feature Pack
+	- Secure network communication
+- Traffic management
+	- Prioritizes the important applications
+- Protocol support
+	- Maintain uptime and availability
 
-# Windows Features
-## Windows at Work
-- Large scale support
-	- Thousands of devices
-- Security cooncerns
-	- Mobile devices with important data
-	- Local file shares
-	- Laptop drives
-- Working on a spreadsheet
-	- Watching a movie
-## Domain Services
-- Active Directory Domain Services
-	- Large database of your network
-- Everything documented in one place
-	- User accounts, servers, volumes, printers
-- Distributed architecture
-	- Many servers
-	- Not suitable for home use
+## Content Delivery Network (CDN)
+- It takes time to get data from one place to the other
+	- Speed up the process
+- Geographically distributed caching servers
+	- Duplicate the data
+	- Users get the data from a local server
+- You are using CDN right now
+	- Used on many websites
+	- Invisible to the end user
+
+## VPN (Virtual Private Network)
+- Secure private data traversing a public network
+	- Encrypted communication on an insecure medium
+- Concentrator / head-end
+	- Encryption/decryption access device
+	- Often integrated into a firewall
+- Many deployment options
+	- Specialized cryptographic hardware
+	- Software based options available
+- Often used with client software
+	- Sometimes built into the OS
+
+## Quality of Service (QoS)
+- Traffic shaping, packet shaping
+- Control by bandwidth usage or data rates
+- Set important applications to have higher priorities than other apps
+- Manage the QoS
+	- Routers, switches, firewalls, QoS devices, etc
+## Time to Live (TTL)
+- How long should data be available?
+	- Not all systems or protocols are self regulating
+	- We sometimes need to tell a system when to stop
+- Create a timer
+	- Wait until traversing a number of hops, or wait until a certain amount of time elapses
+	- Then either stop or drop
 - Many different uses
+	- Drop a packet caught in a loop
+	- Clear a cache
+## Routing loops
+- Router A things the next hop is Router B. Router B thinks the next hop is Router A. They get stuck.
+- Easy to misconfigure, especially with static routing
+- TTL is used to stop the loop
+## IP (Internet Protocol)
+- Loops could cause a packet to live forever
+	- Drop the packet after a certain number of hops
+- Each pass through a router is a hop
+	- Default TTL for macOS/Linux is 64 hops
+	- Defaukt TTL for Windows is 128 hops
+- The router decreases TTL by 1
+	- A TTL of 0 is dropped by the router
+## DNS (Domain Name System)
+- DNS Lookup
+	- Resolve an IP address from a fully qualified Domain Name
+	-  [WEBSITE NAME] = [IP ADDRESS]
+- A device caches the lookup for a certain amnount of time
+	- How long? TTL seconds long
+	
+# Designing the Cloud - 1.3
+## Designing the cloud
+- On demand computing power
+	- Click a button
+- Elasticity
+	- Scale up or down as needed
+- Applications also scale
+	- Scalability for large implementations
+	- Access from anywhere
+- Multitenancy
+	- Many different clients are using the same cloud infrastructure
+## Virtual networks
+- Server farm with 100 individual computers
+- All servers are connected with enterprise switches and routers
+	- With redundancy
+- Migrate 100 physical servers to one physical server
+	- With 100 virtual servers inside
+- What happens to the network?
+## Network Function Virtualization (NFV)
+- Replace physical network devices with virtual versions
+	- Manage fromt he hypervisor
+- Same functionality as a physical device
+	- Routing, switching, load balancing, firewalls, etc
+- Quickly and easily deploy network functions
+	- Click and deply from the hypervisor
+- Many different deployment options
+	- Virtual machine, container, fault tolerance, etc
+## Connecting to the cloud
+- A virtual private cloud (VPC)
+	- A pool of resources created in a public cloud
+- Common to create many VPCs
+	- Many different application clouds
+- Connect VPCs with a transit gateway
+	- And users to VPCs
+	- A "cloud router"
+- Now make is secure
+	- VPCs are commonly on different IP subnets
+	- Connecting to the cloud is often through a VPN
+
+## Virtual Private Cloud Endpoints
+
+![[Pasted image 20260518091330.png]]
+![[Pasted image 20260518091427.png]]
+## Security groups and lists
+- A firewall for the cloud
+	- Control inbound and outbound traffic flows
+- Layer 4 port number
+	- TCP or UDP port
+- Layer 3 address
+	- Individual addresses
+	- CIDR block notation
+	- IPv4 or IPv6
+## Network Security List
+- Assign a security rule to an entire IP subnet
+	- Applies to all devices in the subnet
+- Very broad
+	- Can become difficult to manage
+	- Not all devices in a subnet have the same security posture
+- More granularity may be needed
+	- Broad rules may not provide the right level of security
+## Network Security Group
+- Assign a security rule to a specific NIC (VNIC)
+	- Applies to specific devices and network connections
+- More granular than network security lists
+	- Different rules for devices in the same IP subnet
+- Better control and granularity
+	- The best practice for cloud security rules
+
+
+# Cloud Models : 1.3
+## Cloud Deployment
+- Public
+	- Available to everyone over the internet
+- Private
+	- Your own virtualized local data center
+- Hybrid
+	- A mix of public and private
+## Software as a Service (SaaS)
+- On demand software
+	- No local installation
+	- Why manage your own email distribution or payroll?
+- Central management of data and applications
+	- - Your data is out there
+- A complete application offering
+	- No development work required
+	- Google Mail, Office 365
+## Infrastructure as a service (IaaS)
+- Sometimes called Hardware as a Service (HaaS)
+	- Outsource your equipment
+- You're still responsible for the management
+	- And for the security
+- Your data is out there, but more within your control
+- Web server providers
+## Platform as a Service (PaaS)
+- No servers, no software, no maintenance team, no HVAC
+	- Someone else handles the platform, you handle the development
+- You don't have direct control of the data, people, or infrastructure
+	- Trained security professionals are watching your stuff
+	- Choose carefully
+- Put the building blocks together
+	- Develop your app from what's available on the platform
+	- Salesfoce, etc
+## Cloud Responsibility Matrix
+
+![[Pasted image 20260519060914.png]]
+
+# Introduction to IP
+## A series of moving vans analogy
+- Efficiently move a large amounts of data
+	- Using a shipping truck
+- The network topology is the road
+	- Ethernet, DSL, cable system
+- The truck is the Internet Protocol (IP)
+	- We've designed roads for this truck
+- The boxes hold your data
+	- Boxes of TCP and UDP
+- Inside the boxes are more things
+	- Application Information
+
+## IP - Internet Protocol
+
+![[Pasted image 20260519061226.png]]
+## TCP and UDP
+- Transported inside of IP
+	- Encapsulated by the IP protocol
+- Two ways to move data from place to place
+	- Different features for different applications
+- OSI Layer 4
+	- The transport layer
+- Multiplexing
+	- Use many different applications at the same time
+	- TCP and UDP
+## TCP - Transmission Control Protocol
+- Connection oriented
+	- A formal connection setup and close
+- "Reliable" delivery
+	- Recovery from errors
+	- Can manage out of order messages or retransmissions
+- Flow control
+	- The receiver can manage how much data is sent
+
+![[Pasted image 20260519061551.png]]
+
+## UDP - User Datagram Protocol
+- Connectionless
+	- No formal open or close to the connection
+- "Unreliable" delivery
+	- No error recovery
+	- No reordering of data or retransmission
+- No flow control
+	- Sender determines the amount of data transmitted
+![[Pasted image 20260519061802.png]]
+## Speedy delivery
+- The IP delivery truck delivers from one IP address to another IP address
+	- Every house has an address, every computer has an IP address
+- Boxes arrive at the house / IP address
+	- Where do the boxes go?
+	- Each box has a room name
+- Port is written on the outside of the box
+	- Drop the box into the right room
+## Lots of ports
+- IPv4 sockets
+	- Server IP address, protocol, server application port number
+	- Client IP address, protocol, client port number
+- Non ephemeral ports - permanent port numbers
+	- Ports 0 through 1023
+	- Usually on a server or service
+- Ephemeral ports- temporary port numbers
+	- Ports 1034 through 65,535
+## Ports on the network
+- Web server - tcp/80
+- VoIP server - udp/5004
+- Email server - tcp/143
+
+![[Pasted image 20260519062219.png]]
+![[Pasted image 20260519062312.png]]
+# Common Ports: 1.4
+## FTP - File Transfer Protocol
+- tcp/20 (active mode data), tcp/21 (control)
+	- Authenticates with a username and password
+- Transfers files between systems
+	- Generic file transfer method
+	- Not specific to an OS
+- Full featured funtionality
+	- List, add, delete, etc
+## SSH - Secure Shell
+- tcp/22
+- Text based console communication
+- Encrypted communication link
+## SFTP - Secure FTP
+- tcp/22
+	- Uses the SSH File transfer protocol
+- Generic File transfer with security
+	- Encrypted network communication
+- Provides file system funtionality
+	- Resuming interrupted transfers, directory listings, remote file removal
+- Uses SSH (port 22)
+	- SSH isn't just for console communication
+## Telnet
+- Telnet - Telecommunication Network
+- tcp/23
+- Console access
+	- Similar functionality to SSH
+- In the clear communication
+	- Not the best choice for production systems
+## SMTP - Simple Mail Transfer Protocol
+- Server to server email transfer
+	- tcp/25 (SMTP using plaintext)
+	- tcp/587 (SMTP using TLS encryption)
+- Also used to send mail from a device to a mail server
+	- Commonly configured on mobile devices and email clients
+- Other protocols are used for clients to receive email
+	- IMAP, POP3
+## DNS - Domain Name System
+- udp/53
+	- Converts names to IP addresses
+	- Large transfers may use tcp/53
+- These are very critical resources
+	- Usually multiple DNS servers are in production
+## DHCP - Dynamic Host Configuration Protocol
+- udp/67, udp/68
+- Automated configuration of IP address, subnet mask, and other options
+	- Requires a DHCP server
+	- Server, appliance, integrated into a SOHO router, etc
+- Dynamic/Pooled
+	- IP addresses are assigned in real time from a pool
+	- Each system is given a lease, must renew at set intervals
+- DHCP reservation
+	- Addresses are assigned by MAC address in the DHCP server
+	- Quickly manage addresses from one location
+## TFTP - Trivial File Transfer Protocol
+- udp/69
+- VEry simple file transfer appication
+	- Read and write files
+- No authentication
+	- Not used on highly secure systems
+- Useful when starting a system
+	- Transfer configuration files
+	- Quick and easy
+## HTTP and HTTPs
+- Hypertext Transfer Protocol
+	- Communication in the browser
+	- And by all other applications
+- In the clear or encrypted
+	- SSL (Secure Sockets Layer) or TLS (Transport Layer Security)
+- HTTP
+	- tcp/80
+	- Hypertext Transfer Protocol
+	- Web server communication
+- HHTPS
+	- tcp/443
+	- HTTP over TLS or SSL
+	- Web server communication with encryption
+## NTP - Network Time Protocol
+- Switches, routers, firewalls, servers, workstations
+	- every device has its own clock
+- udp/123
+- Synchronizing the clocks becomes critical
+	- Log files, authentication information, outage details
+- Automatic updates
+- Flexible - You control how clocks are updated
+- Very accurate
+	- Accuracy is better than 1 millisecond on a local network
+## SNMP - Simple Network Management Protocol
+- Gather statistics from network devices
+- udp/161
+- v1 - The original
+	- Structured tables
+	- In the clear
+- v2 - a good step ahead
+	- Data type enhancements
+	- Bulk transfers
+	- Still in the clear
+- v3 - A secure standard
+	- Message integrity
 	- Authentication
-	- Centralized management
+	- Encryption
+- SNMP traps
+	- udp/162
+	- Alerts and notifications from the network device
+## LDAP/LDAPS
+- LDAP (Lightweight Directory Access Protocol)
+	- tcp/389
+	- Store and retrieve information in a network directory
+- LDAPS (LDAP Secure)
+	- A non standard implementaton of LDAP over SSL
+	- tcp/636
+## SMB - Server Message Block
+- Protocol used by Microsoft Windows
+	- File sharing, printer sharing
+	- Also called CIFS (Common Internet File System)
+- Integrated into the operating system
+	- Access rights integration across systems
+	- File share publishing
+	- File locking
+- Direct over tcp/445 (NetBIOS-less)
+	- Direct SMB communication over TCP
+## Syslog
+- Udp/514
+- Standard for message logging
+	- Diverse systems, consolidated log
+- Usually a central log collector
+	- Integrated into the SIEM
+		- Security Information and Event Manager
+- You're going to need a lot of disk space
+	- Data storage from many devices over an extended timeframe
+## Databases
+- Collection of information
+	- Many different types of data
+	- One common method to store and query
+- Structured Query Langiage (SQL)
+	- A standard language across database servers
+- Microsoft SQL Server
+	- MS-SQL
+	- tcp/1433
+## Remote Desktop Protocol
+- tcp/3389
+- Share a desktop from a remote location
+	- Connect to an entire desktop or just an application
+- Remote Desktop Services on many windows versions
+	- Clients for Windows, macOS, Linux, Unic, iPhone, and others
+## SIP - Session Initiation Protocol
+- Voice over IP (VoIP) signaling
+	- tcp/5060 and tcp/5061
+- Setup and manage VoIP sessions
+	- Call, ring, play busy signal, hang up
+- Extended voice communication
+	- Video conferencing
+	- Instant messaging
+	- File transfer
+	- etc
 
-## Organizing network devices
-- Windows Workgroups
-	- Logical groups of networking devices
-	- Each device is a standalone system, everyone is a peer
-- Windows Domain
-	- Business network
-	- Centralized authentication and devices acess
-	- Supports thousand of devices across many networks
+# Other Useful Protocols - 1.4
+## ICMP
+- Internet Control Message Protocol
+	- "Text messaging" for your network devices
+- Another protocol carried by IP
+	- Not used for data transfer
+- Devices can request and reply to administrative requests
+	- Hey are you there? / Yeah I'm here
+- Devices can send messages when things don't go well
+	- That network you're trying to reach is not reachable from here
+	- Your time to live expired, just letting you know
+## GRE
+- Generic Routing Encapsulation
+	- The "tunnel" between two endpoints
+- Encapsulate traffic inside of IP
+	- Two endpoints appear to be directly connected to each other
+	- No built in encryption
+![[Pasted image 20260520060901.png]]
+## VPN
+- Virtual Private Networks
+	- Encrypted (private) data traversing a public network
+- Concentrator
+	- Encryption/decryption access device
+	- Often integrated into a firewall
+- Many deployment options
+	- Specialized cryptographic hardware
+	- Software based options available
 
-## Desktop Styles
-- Your computer has many different uses
-	- Those change depending on where you are
-- Work
-	- Standard desktop
-	- Common user interface
-	- Customization very limited
-	- You can work at any computer
-- Home
-	- Complete flexibility
-	- Background photos, colors, UI sizing
-## Availability of RDP
-- Remote Desktop Protocol
-	- View and control the desktop of a remote device
-- RDP client
-	- Connects to a Remote Desktop Service
-	- Clients available for almost any operating system
-- Remote Desktop Service
-	- Provides access for the RDP client
-	- Available in Windows 10 and 11 Pro and Enterprise
-	- Not available in Windows 10 and 11 Home
+## Site to Site VPN
+- Always on or almost always on
+- Firewalls often act as VPN concentrators
+	- Probably already have firewalls in place
 
-## RAM support limitation
-- RAM support varies between editions
-	- More advanced editions allow for additional RAM
+![[Pasted image 20260520061139.png]]
 
-## Bitlocker and EFS
-- Data confidentiality
-	- Encrypt important information
-- Encrypting File System (EFS)
-	- Protect individual files and folders
-	- Built in to the NTFS file system
-- Bitlocker
-	- Full Disk Encryption (FDE)
-	- Everything on the drive encrypted 
-	- Even the operating system
-- Home and business use
-	- Especially on mobile devices
+## IPSec (Internet Protocol Security)
+- Security for OSI Layer 3
+	- Authentication and encryption for every packet
+- Confidentiality and integrity/anti-replay
+	- Encryption and packet signing
+- Very standardized
+	- Common to use multi vendor implementations
+- Two core IPSec protocols
+	- Authentication Header (AH)
+	- Encapsulation Security Payload (ESP)
 
-## Group Policy editor
-- Centrally manage users and systems
-	- Policies can part of Active directory or a local system
-- Local Group Policy
-	- Manages the local device
-	- gpedit.msc
-- Group Policy Management Console
-	- Integrated with Active Directory
-	- Power system management
-	- gpmc.msc
+## Internet Key Exchange
+- Agree on encryption/decryption keys
+	- Without sending the key across the network
+	- Builds a Security Association (SA)
+- Phase I
+	- Use Diffie-Helman to create a secret shared key
+	- udp/500
+	- ISAKMP (Internet Security Association and Key Management Protocol)
+- Phase II
+	- Coordinate ciphers and key sizes
+	- Negotiate an inbound and outbound SA for IPsec
+![[Pasted image 20260520061645.png]]
 
-# Task Manager: 1.4
-## Task Manager
-- Real time system statistics
-	- CPU, memory, disk access, etc
-- Starting the Task Manager
-	- ctrl + alt + del, select task manager
-	- Right mous click the taskbar and select taskbar
-	- ctrl + shift + esc
-## Services
-- Non interactive applications
-	- Hundred of background processes
-- Manage from one screen
-	- Star, stop, restart
-## Startup
-- Manage which programs start with a Windows login
-	- Easily toggle on and off
-- Multiple reboots
-	- Enable and disable
-## Processes
-- View all running processes
-	- Interactive and system tray apps
-	- View processes from other accounts
-- Manage the view
-	- Move columns, add metrics
-## Performance
-- What's happening?
-	- CPU, memory, etc
-- Statistical views
-	- Historical, real time
-## Users
-- Who is connected?
-	- What are they doing
-- Other options
-	- Disconnect a user
-	- Manage user accounts
-# The Microsoft Management Console: 1.4
+## Transport mode and Tunnel Mode
+- Original packet
+	- IP Header and Data
+- Transport Mode
+	- IP Header
+	- IPsec Headers
+	- Data
+	- IPsec Trailers
+- Tunnel Mode
+	- New IP Head Header
+	- IPsec Header
+	- IP header
+	- Data
+	- IPsec Trailers
+## Authentication Header
+- Hash of the packet and shared key
+	- MD5, SHA-1, or SHA-2 are common
+	- Adds the AG to the packet header
+
+![[Pasted image 20260520061950.png]]
+## Encapsulation Security Payload (ESP)
+- Encrypts the packet
+	- MD5, SHA-1, or SHA-2 for hash, and 3DES or AES for encyption
+	- Adds a header, a trailer, and an Integrity Check Value
+
+![[Pasted image 20260520062130.png]]
+
+# Network Communication - 1.4
+## Unicast
+- One station sending information to another
+	- One to one
+- Send information between two systems
+- Web surfing, file transfers
+- Does not scale optimally for real time straming media
+- IPv4 and IPv6
+## Multicast
+- Delivery of information to interested systems
+	- One to many of many
+- Multimedia delivery, stock exchanges, dynamic routing updates
+- Very specialized
+	- Difficult to scale across large networks
+- Used in both IPv4 and IPv6
+	- Extensive use in IPv6
+## Anycast
+- Single destination IP that has multiple paths or two or more endpoints
+	- One to one of many
+	- Used in IPv4 and IPv6
+- Configure the same anycast address on different devices
+	- Looks like any other unicast address
+- Packets sent to an anycast address are delivered to the closest interface
+	- Announce the same rout out of multiple data centers, clients use the data center closes to them
+	- Anycast DNS
+## Broadcast
+- Send information toe everyone at once
+	- One to all
+- One packet, received by everyone
+- The broadcast domain has a limited scope
+- Routing updates, ARP requests
+- Used in IPv4
+- Not used in IPv6, multicast is used instead
+
+# Wireless Networking - 1.5
+## Wireless standards
+- Wireless networking (802.11)
+	- Managed by the IEE LAN/MAN standards committee (IEEE 802)
+	- Institute of Electrical and Electronic Engineers
+- Many updates over time
+	- Check with IEEE for the latest
+- The WIFI trademark
+	- WiFi Alliance handles interoperability testing
+- Modern standards have more marketable names
+	- 802.11ax = Wifi 6
+
+## 802.11 networking
+- 802.11a
+	- 5 GHz
+	- 6-54 Mbit/s
+- 802.11b
+	- 2.4 GHz
+	- 1-11 Mbit/s
+- 802.11g
+	- 2.4 GHz
+	- 6-54 Mbit/s
+- 802.11n
+	- Wifi 4
+	- 2.4/5 GHz
+	- 72-600 Mbit/s
+- 802.11ac
+	- Wifi 5
+	- 5 GHz
+	- 433-6933 Mbit/s
+- 802.11ax
+	- Wifi 6 and 6E
+	- 2.4/5/6 Ghz
+	- 574-9608 Mbit/s
+- 802.11be
+	- Wifi 7
+	- 2.4 GHz/5GHz/6Ghz
+	- 1376-46,120 Mbit/s
+## 4g and LTE
+- Long Term Evolution (LTE)
+	- A 4g technology
+	- Converged standard (GSM and CDMA providers)
+	- Based on GSM and EDGE (Enhanced Data Rates for GSM Evolution)
+	- Standard Supports download rates of 150 Mbit/s
+- LTE Advanced (LTE-A)
+	- Standard supports download rates of 300 Mbit/s
+
+## 5g
+- Fifth generation cellular networking
+	- Launched worldwide in 2020
+- Significant performance improvements
+	- At higher frequencies
+	- Eventually 10 gigabits per second
+	- Slower speeds from 100-900 Mbit/s
+- Significant IoT impact
+	- Bandwidth becomes less o f a constraint
+	- Larger data transfers
+	- Faster monitoring and notification 
+	- Additional cloud processing
+## Satellite Networking
+- Communication to a satellite
+	- Non terrestiral communication
+- High cost relative to terrestrual networking
+	- 100 Mbit/s down, 5 Mbit/s up are common
+	- Remote sites, difficult to network sites
+- Relatively high latency
+	- 250 ms up, 250 ms down
+	- Starlink advertises 40 ms and is working on 20 ms
+- High frequencies - 2 Ghz
+	- Line of sight, rain fade
+
+# Ethernet Standards - 1.5
+## Ethernet
+- The most popular networking technology in the world
+	- Standard, common, nearly universal
+- Many different types of ethernet
+	- Speeds, cabling, connectors, equipment
+- Modern Ethernet uses twisted pair copper or fiber
+	- The standard defines the media
+
+## IEEE Ethernet standards
+- The IEEE 802.3 committee
+	- Institute of Electrical and Electronic Engineers
+	- All types and standards of Ethernet
+	- Copper and fiber
+- IEEE Standards for Internet
+	- 1000BASE-T: Gigabit ethernet, copper, 1 gigabit per second
+	- 10GBASE-T: 10 Gigabit Ethernet, copper, 10 gigabits per second
+	- 1000BASE-SX: Gigabit Ethernet, fiber, 1 gigabit per second
+
+## Deciphering the standard
+- Speed, signal, and media
+	- All contained in the standard name, i.e, 1000BASE-T
+- The number is related to the network Speed
+	- 1000 is commonly 1,000 megabits per second (or one gigabit per/sec)
+	- 10G would be 10 gigabits per second
+- BASE (baseband)
+	- Single frequency using the entire medium
+	- Broadband uses many frequencies, sharing the medium
+- Media Type
+	- T is twisted pair copper, F is fiber
+	- SW is short wavelength light
+# Optical Fiber - 1.5
+## FIber Communication
+- Transmission by light
+	- The visible spectrum
+- No RF signal
+	- Very difficult to monitor or tap
+- Signal slow to degrase
+	- Transmission over long distances
+- Immune to radio interference
+	- There's no RF
+
+## Fiber Optic Diagrams
+![[Pasted image 20260521061634.png]]
+![[Pasted image 20260521061700.png]]
+![[Pasted image 20260521061720.png]]
+
+## Multimode Fiber
+- Short range communication
+	- Up to 2 km
+- Inexpensive light source
+	- ie, LED
+![[Pasted image 20260521061816.png]]
+
+## Single Mode Fiber
+- Long range communications
+	- Up to 100 km without processing
+- Expensive light source
+	- Laser beams
+![[Pasted image 20260521061901.png]]
+
+# Copper Cabling - 1.5
+## The importance of cable
+- Fundamental to network communication
+	- Incredibly important foundation
+- Usually only get one good opportunity at building your cabling infrastructure, so make it good
+- The cast majority of wireless communication uses cables
+	- Everything eventually touches a cable
+## Twisted pair copper cabling
+- Balanced pair operation
+	- Two wires, with equal and opposite signals
+	- Transmit+, Transmit-/Receive+, Receive-
+- The twist is the secret
+	- Twisted cables keep a single wire constantly mioving away from interference
+	- The opposite signals are compared on the other end
+- Pairs in the same cable have different twists rates
+## Cable speeds
+- Cables don't have a speed
+	- The copper just sits there
+- Electric signals are sent over copper cable
+	- The signal encoding determined the data transfer rate
+- A cable must be manufactured to specific standards
+	- IEEE 802.3 Ethernet standards determine the cable type
+- Cable standars are descried as a "category" of cable
+	- Category 6, category 7, etc
+	- Check for the IEEE standard to determine the minimum cable category
+	- The minimum cable category for 1000BASE-T is Category 5
+
+## Coaxial cables
+- Two or more forms share a common axis
+- RG-6 used in television/digital cable
+	- And high speed internet over cable
+![[Pasted image 20260521062513.png]]
+
+## Twinaxial Cable
+- Two inner conductors
+	- Twinax
+- Common on 10 Gigabit Ethernet SFP+ Cables
+	- Full duplex
+	- Five meters
+	- Low cost
+	- Low latency compared to twisted pair
+
+## Plenum space
+- Space between the drop ceiling and the actual ceiling
+- Contains cables, heat sensors, and other pieces of infrastructure
+## No Plenum
+![[Pasted image 20260521062801.png]]
+
+## Plenum
+![[Pasted image 20260521062842.png]]
+- Plenum Space
+	- Building Air circulation
+	- Heating and air conditioning system
+- Concerns in the case of a fire
+	- Smoke and toxic fumes
+- Worst case planning
+	- Important concerns for any structure
+## Plenum rated cables
+- Traditional cable jacket
+	- Polyvinyl chloride (PVC)
+- Fire rated cable jacket
+	- Flourinated ethylene polymer (FEP) or low smoke polyvinyl chloride (PVC)
+- Plenum rated cable may not be as flexible
+	- May not have the same bend radius
+- Worst case planning
+	- Used in plenum and risers
+	- Important concerns for any structure
+
+# Network Transceivers - 1.5
+## Transceiver
+- Transmitter and receiver
+	- Usually in a single component
+- Provides a modular interface
+	- Add the transceiver that matches your network
+- Many different types
+	- Ethernet or Fibre Channel
+	- Not compatible with each other
+- Different media types
+	- Fiber and copper
+## SFP and SFP+
+- Small Form Factor Pluggable (SFP)
+	- Commonly used to provice 1Gbit/s fiber 
+	- 1 Gbit/s RJ45 SFPs also available
+- Enhanced Small Form Factor Pluggable (SFP+)
+	- Exactly the same physical size as SFPs
+	- Supports data rates up to 16 Gbit/s
+	- Common with 10 Gigabit Ethernet
+
+## QSFP
+- Quad Form Factor Pluggavle
+	- 4 channel SFP = Four Gbit/s = 4 Gbit/s
+	- QSFP_ is 4 channel SPF+ = Four 10 Gibit/sec = 40 Gbit/sec
+- Combine four SFPs into a single transceiver
+	- Cost savings in fiber and equipment
+## Transceiver Comparison
+![[Pasted image 20260523063640.png]]
+
+# Fiber Connectors 1.5
+## SC - Subscriber Connector
+- Not the actual name, we just made something up
+	- Square Connector and Standard Connector also acceptable
+- Pushes on to lock
+	- Pull conntector to unlock
+- A popular fiber connector
+	- Common in many data centers
+
+![[Pasted image 20260523063943.png]]
+
+## LC - Local Connector
+- Another popular fiber type
+	- Smaller and more compact connector
+- Locks in place with a clip
+	- Press to release
+- Other names:
+	- Lucent Connector, Little Connector
+
+![[Pasted image 20260523063918.png]]
+## ST - Straight Tip
+- Bayonet Connector
+	- Stick and Twist
+- Push on and turn
+	- Locks in place
+	- Turn to unlock
+![[Pasted image 20260523064052.png]]
+## MPO - Multi Fiber Push On
+- Twelve fibers in a single connector
+	- Save space and manage one cable
+- Push to lock in place
+	- Pull connector to unlock
+- May also see the MTP abbreviation
+	- A Corning Brand
+	- The MTP MPO connector
+![[Pasted image 20260523064225.png]]
+
+![[Pasted image 20260523064239.png]]
+
+# Copper Connectors 1.5
+## RJ11 Connector
+- Registered Jack type 11
+	- 6 position, 2 conductor (62p2c)
+- Telephone and DSL connection
+![[Pasted image 20260523064411.png]]
+
+## RJ45
+- Registered Jack type 45
+- 8 position, 8 conductor (8P8C)
+	- Modular Connector
+	- Ethernet
+![[Pasted image 20260523064458.png]]
+![[Pasted image 20260523064508.png]]
+## F-Connector
+- Coaxial Cable
+	- Standard connector type
+	- Threaded connector
+- Cable television infrastructure
+	- Cable modem
+	- DOCSIS (Data Over Cable Service Interface Specification)
+![[Pasted image 20260523064622.png]]
+
+## BNC Connector
+- Bayonet Neill-Concelman
+	- Payle Neill (Bell Labs) and Carl Concelman (Amphernol)
+	- Another common coaxial cable connector
+		- Common with twinax and Ds3 WAN links
+		- Video connections
+	- Secure connections
+		- Twist and lock in place
+
+![[Pasted image 20260523064753.png]]
+![[Pasted image 20260523064804.png]]
+# Network Topologies: 1.6
+
+# Network Architectures: 1.6
+
+# Binary Math: 1.7
