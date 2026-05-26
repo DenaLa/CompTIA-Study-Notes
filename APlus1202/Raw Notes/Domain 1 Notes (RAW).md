@@ -587,3 +587,75 @@
 	- Disconnect a user
 	- Manage user accounts
 # The Microsoft Management Console: 1.4
+- Build your own console
+	- **mmc. exe**
+- A handy starting point
+	- Event viewer
+	- Local and User groups
+	- Disk Management
+	- Task Scheduler
+	- And more!
+- Notes
+	- You can add additional functions by going to file > Add/Remove Snap In
+## Event Viewer
+- Central event consolidation
+	- Find out what happened
+- Application, Security, Setup, System
+- Information, Warning, Error, Critical, Successful Audit, Failure audit
+- **eventvwr.msc**
+## Disk Management
+- Manage disk operations
+	- Individual computers and die servers
+- **diskmgmt.msc**
+- ***WARNING***
+	- ***YOU CAN ERASE DATA WITH THIS TOOL***
+	- ***ALWAYS HAVE A BACKUP***
+
+## Task Scheduler
+- Schedule an application or script
+	- Plan your future
+- Includes predefined schedules
+	- Click and go
+- Organize
+	- Manage with folders
+- **taskschd.msc**
+## Device Manager
+- The OS doesn't know how to talk to most hardware
+- Device drivers are hardware specific and OS specific
+	- Older drivers may not necessarily work in Windows 10 or 11
+
+## Certificate Manager
+- View and User and trusted certs
+	- Add and remove
+- **certmgr.msc**
+
+## Local Users and Groups
+- Users
+	- Administrator: = The windows Super User
+	- Guest: Limited Access
+	- "Regular Users": Have an account and normal access
+- Groups
+	- Administrators, users, backup operators, power users, etc
+
+## Performance monitor
+- Gather long term statistics
+	- **perfmon.msc**
+- OS metrics,
+	- Disk, memory, CPU, etc
+- Set alerts and automated actions
+	- Monitor and act
+- Store statistics
+	- Analyze long term trends
+- Built in reports
+	- View the data
+## Group Policy Editor
+- Centrally manage users and systems
+	- Policies can be part of Active Directory or a local system
+- Local Group Policy Editor
+	- Manages the local device
+	- **gpedit.msc**
+- Group Policy Management Console
+	- Integrated with Active Directory
+	- Powerful system management
+	- **gpmc.msc**
+# Additional Windows Tools: 1.4
