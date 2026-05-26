@@ -1011,7 +1011,109 @@
 ![[Pasted image 20260523064753.png]]
 ![[Pasted image 20260523064804.png]]
 # Network Topologies: 1.6
+## Network Topologies
+- Useful in planning a new network
+	- Physical layout of a building or campus
+- Assists in understanding signal flow
+	- Troubleshooting problems
+## Star/Hub and Spoke
+- Used in most large and small networks
+- All devices are connected to a central device
+- Switched Ethernet networks
+	- The switch is in the middle
+## Mesh
+- Multiple links to the same place
+	- Fully connected
+	- Partially connected
+- Redundancy, fault tolerance, load balancing
+- Used in WANs.
+	- Fully meshed and partially meshed
+![[Pasted image 20260526060218.png]]
 
+## Hybrid
+- A combination of one or more physical topologies
+	- Most networks are a hybrid
+
+## Spine and leaf architecture
+- Each leaf switch connects to each spine switch
+	- Each spine switch connects to each leaf switch
+- Leaf switches do not need to connect to each other. Same for spine switches
+- Tope of rack switching
+	- Each leaf is on the "top" of a phusical network rack
+	- May include a group of physical racks
+- Advantages
+	- Simple cabling
+	- Redundant
+	- Fast
+- Disadvantages
+	- Additional switches may be costly
+![[Pasted image 20260526060607.png]]
+
+## Point to point
+- One to one connection
+- Older WAN links
+	- "Point to point T-1"
+- Connections between buildings
 # Network Architectures: 1.6
+## Three tier architecture
+- Core
+	- The center of the network
+	- Web servers, databases, applications
+	- Many people need access to this
+- Distribution
+	- A midpoint between the core and the users
+	- Communication between access switches
+	- Manage the path to the end users
+- Access
+	- Where the users connect
+	- End stations, like printers
+![[Pasted image 20260526061217.png]]
 
+![[Pasted image 20260526061237.png]]
+
+## Collapsed core
+- Two tier model
+	- Simplify the three tier architecture
+	- A good fit for smaller organizations
+- Combine Core and Distrubution layers
+	- Collapse together
+- Differences over three tier
+	- Simpler to design and support
+	- Less expensive to implement
+	- Not as resilient
+![[Pasted image 20260526061405.png]]
+## Traffic flows
+- Traffic flows within a data center
+	- Important to know where traffic starts and ends
+- East-West
+	- Traffic between devices in the same data center
+	- Relatively fast response times
+- North-South traffic
+	- Ingress/egress to an outside device
+	- A different security posture than east-west traffic
+
+![[Pasted image 20260526061625.png]]
 # Binary Math: 1.7
+## Basics of binary math
+- A bit: A zero or one. Represents off or on
+- A byte: Eight bits
+	- Often called an "octet" to avoid ambiguity
+- Binary decimal conversion: you add the numbers at each decimal place up
+
+![[Pasted image 20260526061802.png]]
+## Binary to decimal
+- 0000 0010 = 2
+- 1111 1111 = 255
+- 154 = 1001 1010
+## More bits, more addresses
+- The more bits you have, the more addresses you can accommodate
+
+## Extending the math
+- Powers of two are useful for binary calculations and subnetting
+![[Pasted image 20260526062204.png]]
+
+# IPv4 addressing: 1.7
+
+# Classful Subnetting: 1.7
+
+# IPv4 Subnet Masks: 1.7
