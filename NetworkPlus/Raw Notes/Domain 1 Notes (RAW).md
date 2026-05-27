@@ -1113,7 +1113,151 @@
 ![[Pasted image 20260526062204.png]]
 
 # IPv4 addressing: 1.7
+## Networking with IPv4
+- IP Address, i.e, 192.168.1.165
+	- Every device needs a unique IP address
+- Subnet Mask, i.e 255.255.255.0
+	- Used by local device to determine what subnet its on
+	- The subnet mask isn't usually transmitted across the network
+	- You'll ask for the subnet mask all the time
+- Default gateway, i.e, 192.168.1.1
+	- The router that allows you to connect outside your local subnet
+	- The default gateway must be an IP address on the local subnet
+## IPv4 Address
+- Internet Protocol version 5
+	- OSI layer 3 address
+	- 4 octets, 32 bites, 4 bytes
+	- Since one byte is 8 bits, the maximum decimal value for each byte is 255
+## DHCP
+- IPv4 address configuration, used to be manual
+	- IP address, subnet mask, gateway, DNS servers, NTP servers, etc
+- Dynamic Host Configuration Preotocol
+	- Provides automatic address and IP configuration for almost all devices
+## Automatic Private IP Addressing (APIPA)
+- A link local address
+	- Can only communicate to other local devices
+	- No forwarding by router
+- IETF has reserved 169.254.0.1 through 169.254.255.254
+	- First and last 256 address are reserved
+	- Functional block of 169.254.1.0 through 169./254.254.255
+- Automatically assigned
+	- Uses ARP to confirm the address currently in use
+## The IPv4 address problem
+- There are far more devices than IPv4 addresses
+- The use and registration of IP address ranges is problematic
+	- Unused and non continuous address blocks
+	- Complete depletion of available addresses
+## Private IP address Ranges
+- More public IP addresses, more internet connectivity
+- HUge private IP address ranges
+	- Properly design and scale large networks
+- Private IP addresses are not internet routable
+	- But can be routed internally
+	- Use NAT for everything else
+- Defined in RFC 1918
+	- Request for Comment
+## Public VS Private Addresses
+- RFC 1918 private IPv4 Addresses
+![[Pasted image 20260527063031.png]]
 
 # Classful Subnetting: 1.7
+## Classful subnetting
+- Very specific subnetting architecture
+	- Not used since 1993, but still referenced
+- Used as a starting point when subnetting
+	- Standard values
+## Subnet Class
+- Class A
+	- **Leading Bits**: 0xxx (0-127)
+	- **Network Bits**: 8
+	- **Remaining Bits**: 24
+	- **Number of Networks**: 128
+	- **Hosts per Network**: 16, 777, 214
+	- **Default Subnet Mask**: 255.0.0.0
+- Class B
+	- **Leading Bits**: 10xx (128-191)
+	- **Network Bits**: 16
+	- **Remaining Bits**: 16
+	- **Number of Networks**: 16,384
+	- **Hosts per Network**: 65,534
+	- **Default Subnet Mask**: 255.255.0.0
+- Class C
+	- **Leading Bits**: 110x (192-223)
+	- **Network Bits**: 24
+	- **Remaining Bits**: 8
+	- **Number of Networks**: 2,097,152
+	- **Hosts per Network**: 254
+	- **Default Subnet Mask**: 255.255.255.0
+- Class D (Multicast)
+	- **Leading Bits**: 1110 (224-239)
+- Class E (Reserved)
+	- **Leading Bits**: 1111 (240-255)
+## The construction of a subnet
+- Network Address
+	- The first IP address of a subnet
+	- Set all host bits to 0 (0 decimal)
+- First Usable Host Address
+	- One number higher than the network address
+- Network broadcast address
+	- The last IP address of a subnet
+	- Set all host buts to 1 (255 decimal)
+- Last usable host address
+	- One number lower than the broadcast address
 
+## Subnet Calculations Example
+- IP address: 10.74.222.11
+	- Class A
+	- Subnet Mask: 255.0.0.0
+	- Network Bits: 10.
+	- Host Bits: 74.222.11
+- Network Address
+	- Set all host bits to 0
+	- 10.0.0.0
+- First Host Address
+	- Add one
+	- 10.0.0.1
+- Broadcast Address
+	- Set all host bits to 1
+	- 10.255.255.255
+- Last Host Address
+	- Subtract one
+	- 10.255.255.254
 # IPv4 Subnet Masks: 1.7
+## Classless Subnetting
+- CIDR (Classless Inter Domain Routing
+	- Created around 1993)
+	- Removed the restriction created by classful subnet masks
+	- "Cider" block notation
+- Subnet Masks can be expressed as a decimal or in CIDR notation
+	- IP address, slash, number of subnet bits; 192.168.144/24
+- You'll usually be asked to probide an IP address, subnet mask, default gateway, and DNS servers
+	- Some OSes are expecting decimal masks
+	- Some OSes are expecting CIDR notation masks
+![[Pasted image 20260527064519.png]]
+## The Subnet Mask
+- Contiguous series of ones
+	- Ones on the left
+	- Zeroes on the right
+- 11111111.11111111.11111111.00000000
+	- Network: 24 bits
+	- Host: 8 bits
+	- 255.255.255.0
+	- /24
+## Binary to CIDR block notation
+- 11111111.11110000.00000000.00000000
+	- Network: 12 Bits
+	- Host: 20 bits
+	- 8 + 4 + 0 + 0
+	- /12
+## Subnet Masks, Binary to decimal
+- 00000000 = 0
+- 10000000 = 128
+- 11000000 = 192
+- 11100000 = 224
+- 11110000 = 240
+- 11111000 = 248
+- 11111100 = 252
+- 11111110 = 254
+- 11111111 = 255
+
+# Calculating IPv4 Subnets and Hosts 1.7
